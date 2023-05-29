@@ -28,7 +28,7 @@ const Reviews = () => {
                 <p>Character: {content}</p>
             </li>))}
             </ul> 
-            : <p>There are no reviews...</p>}
+            : <p>There are no reviews....</p>}
         </>
     )
 }
