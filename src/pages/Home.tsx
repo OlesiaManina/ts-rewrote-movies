@@ -1,9 +1,10 @@
 import moviesAPI from '../moviesAPI';
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { IMovie } from './MovieDetails';
 
 const Home = () => {
-    const [movies, setMovies] = useState([]);
+    const [movies, setMovies] = useState<IMovie[]>([]);
 
     useEffect(() => {
         const fetchMovies = async () => {
@@ -20,7 +21,7 @@ const Home = () => {
     return (
         <ul style={{display: "flex", flexDirection: 'column', gap: "10px"}}>
             {movies && movies.map(({id, title}) => 
-            (<li key={id} style={{fontSize: '10px', color: 'black'}}>
+            (<li key={id} style={{fontSize: 15, fontWeight: 500}}>
               <Link to={`/movies/${id}`}>{title}</Link>
               </li>))}
         </ul>

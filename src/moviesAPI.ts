@@ -8,22 +8,22 @@ async function fetchTranding () {
     return response.data.results;
 }
 
-async function fetchDetailInfo (movie_id) {
+async function fetchDetailInfo (movie_id: string) {
   const response = await axios.get(`3/movie/${movie_id}?api_key=${API_KEY}`);
   return response;
 }
 
-async function fetchCastInfo (movie_id) {
+async function fetchCastInfo (movie_id: string) {
   const response = await axios.get(`3/movie/${movie_id}/credits?api_key=${API_KEY}`);
   return response;
 }
 
-async function fetchReviews (movie_id) {
+async function fetchReviews (movie_id: string) {
   const response = await axios.get(`3/movie/${movie_id}/reviews?api_key=${API_KEY}`);
   return response;
 }
 
-async function fetchBySearch (value) {
+async function fetchBySearch (value: string) {
   const response = await axios.get(`3/search/movie?api_key=${API_KEY}&query=${value}`);
   return response;
 }

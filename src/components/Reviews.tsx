@@ -2,9 +2,19 @@ import { useParams } from "react-router-dom";
 import moviesAPI from '../moviesAPI';
 import { useState, useEffect } from "react";
 
+type Author = {
+    name: string;
+}
+
+interface IReview {
+    id: string;
+    author_details: Author; 
+    content: string;
+}
+
 const Reviews = () => {
-    const {movieId} = useParams();
-    const [reviews, setCastReviews] = useState([])
+    const { movieId } = useParams<{ movieId: string }>();
+    const [reviews, setCastReviews] = useState<IReview[]>([])
 
     useEffect(()=> {
         if (!movieId) return;

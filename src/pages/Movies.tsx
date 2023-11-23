@@ -1,19 +1,19 @@
 import { useSearchParams, useLocation, Link } from "react-router-dom";
 import moviesAPI from '../moviesAPI';
-import { useState, useEffect } from "react";
-
+import { useState, useEffect, FormEvent } from "react";
+import { IMovie } from './MovieDetails';
 
 const Movies = () => {
-    const [movies, setMovies] = useState([]);
+    const [movies, setMovies] = useState<IMovie[]>([]);
     const [searchParams, setSearchParams] = useSearchParams();
-    const query = searchParams.get("query") ?? '';
+    const query: string = searchParams.get("query") ?? '';
     const location = useLocation();
     
 
-    const handleSubmit = e => {
+    const handleSubmit = ( e: FormEvent<HTMLFormElement> )  => {
         e.preventDefault();
         const form = e.currentTarget;
-        const value = form.elements.query.value;
+        const value = (form.querySelector('input[name="query"]') as HTMLInputElement).value;
         if (value === '') {
             return setSearchParams({});
         }
